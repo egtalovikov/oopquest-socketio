@@ -68,6 +68,11 @@ export const setCurrentQuestion = (roomCode, questionType) => {
 
 	let currentQuestion = null;
 
+	// Если текущий вопрос уже задан, не нужно его менять
+	if (rooms[roomCode].currentQuestion) {
+		return;
+	}
+
 	switch (questionType) {
 		case QUESTION_TYPES.PICK:
 			if (!questionSets[roomCode].pickQuestions.length) {
